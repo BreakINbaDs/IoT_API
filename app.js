@@ -33,7 +33,7 @@ io.on('connection', function (socket) {
 });
 
 // Connect to DB
-mongoose.connect('mongodb://localhost/smarthome', function(err){
+mongoose.connect('mongodb://ds133632.mlab.com:33632/heroku_2nm9bb8r', function(err){
   console.log(err);
 });
 
