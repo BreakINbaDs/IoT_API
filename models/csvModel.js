@@ -1,16 +1,23 @@
 var mongoose = require('mongoose');
 
 var smartHome = mongoose.Schema({
-    temperature: String,
-    humidity: String,
+    data: mongoose.Schema.Types.Mixed,
     date: { type: Date, default: Date.now },
-    address: String,
     sensor: {
       room: String,
-      id: String
+      sensortype: String,
+      id: Number
     }
 });
 
-var smartHome = mongoose.model('smartHome', csvSchema);
+var smartUser = mongoose.Schema({
+    password: String,
+    mobile_phone: String
+});
+
+var smartHome = mongoose.model('smartHome', smartHome);
+var smartUser = mongoose.model('smartUser', smartUser);
+
 
 module.exports = smartHome;
+module.exports = smartUser;

@@ -13,6 +13,7 @@ var http = require('http'),
 
 // Create global app object
 var app = express();
+
 app.use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -20,6 +21,8 @@ app.use(function(req, res, next) {
         res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
         next();
     });
+
+
 // Use sockets for realtime updates about file loading
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
@@ -51,11 +54,6 @@ app.use(express.static(__dirname + '/public'));
 var routes = require('./routes/csvRoutes'); //importing route
 routes(app); //register the route
 
-
-//Get index page
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
